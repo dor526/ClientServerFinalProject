@@ -1,24 +1,23 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-const Dashboard =() =>{
-  const [stocks, setStocks] = useState(null)
-  useEffect(()=>{
-    const fetchStocks =async () =>{
-        const response = await fetch('/api/')
-        console.log(response[0]+"1"+response[1])
-        const json = await response.json()
-        console.log(json[0]+"2"+json[1])
-        if(response.ok){
-          setStocks(json)
-        }
-    }
-    fetchStocks()
-  }, [])
+const Dashboard = () => {
+  const [stocks, setStocks] = useState(null);
+  useEffect(() => {
+    const fetchStocks = async () => {
+      const response = await fetch("/stocks");
+      console.log(response[0] + "1" + response[1]);
+      const json = await response.json();
+      console.log(json[0] + "2" + json[1]);
+      if (response.ok) {
+        setStocks(json);
+      }
+    };
+    fetchStocks();
+  }, []);
 
   useEffect(() => {
-    console.log('Updated stocks state:', stocks);
+    console.log("Updated stocks state:", stocks);
   }, [stocks]); // This will log whenever 'stocks' state is updated
-
 
   const formatMarketCap = (value) => {
     if (value >= 1e12) {
@@ -31,7 +30,6 @@ const Dashboard =() =>{
       return `$${value}`;
     }
   };
-  
 
   return (
     <div className="dashboard">
@@ -54,7 +52,12 @@ const Dashboard =() =>{
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>
-                  <img src={company.logo} alt={`${company.name} logo`} width="30" style={{ marginRight: '10px' }} />
+                  <img
+                    src={company.logo}
+                    alt={`${company.name} logo`}
+                    width="30"
+                    style={{ marginRight: "10px" }}
+                  />
                   {company.name}
                 </td>
                 <td>{company.symbol}</td>
@@ -63,8 +66,8 @@ const Dashboard =() =>{
                 <td
                   className={
                     parseFloat(company.percentageChange) > 0
-                      ? 'positive-change'
-                      : 'negative-change'
+                      ? "positive-change"
+                      : "negative-change"
                   }
                 >
                   {company.percentageChange}
@@ -81,7 +84,4 @@ const Dashboard =() =>{
   );
 };
 
-
-export default Dashboard
-
-
+export default Dashboard;

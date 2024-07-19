@@ -2,7 +2,7 @@
 const express = require('express')
 const axios = require('axios');
 
-const router =express.Router()
+const router = express.Router()
 
 const API_KEY = 'cq6gf31r01qlbj503g40cq6gf31r01qlbj503g4g';
 
@@ -75,4 +75,4 @@ router.get('/', async (req,res)=>{
     // })
 })
 
-module.exports =router
+module.exports = router

@@ -1,19 +1,16 @@
 import Dashboard from "./pages/dashboard";
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Login from "./pages/login";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-     <BrowserRouter>
-      <div className="pages">
+    <div className="h-full">
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard></Dashboard>}>
-          </Route>
-
+          <Route path="/" element={<Login></Login>}></Route>
+          <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
         </Routes>
-
-      </div>
-     
-     </BrowserRouter>
+      </BrowserRouter>
     </div>
   );
 }
