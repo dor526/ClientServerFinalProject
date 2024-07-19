@@ -4,7 +4,7 @@ const Dashboard =() =>{
   const [stocks, setStocks] = useState(null)
   useEffect(()=>{
     const fetchStocks =async () =>{
-        const response = await fetch('/api/')
+        const response = await fetch('/api/dashboard/')
         console.log(response[0]+"1"+response[1])
         const json = await response.json()
         console.log(json[0]+"2"+json[1])

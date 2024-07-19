@@ -12,6 +12,22 @@ body {
   font-family: "Poppins";
 }
 
+header {
+  background: #fff;
+}
+header .navbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  color: #333;
+  text-decoration: none;
+}
+
 .pages{
   max-width: 1400px;
   padding: 20px;
@@ -66,4 +82,21 @@ body {
 
 .negative-change {
   color: red;
+}
+
+/* navbar */
+nav {
+  display: flex;
+  align-items: center;
+}
+nav a {
+  margin-left: 10px;
+}
+/* auth forms */
+form.signup, form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
 }
