@@ -20,16 +20,16 @@ const Login = () => {
       body: JSON.stringify(data),
     };
 
-    const submittedUser = await fetch(
+    const response = await fetch(
       "http://localhost:4000/user/login",
       requestOptions
     );
 
-    if (!submittedUser) {
-      console.log("Error Logging in occured");
-    } else {
+    if (response.status >= 200 && response.status < 400) {
       console.log("navigating to dashboard...");
       navigate("/dashboard");
+    } else {
+      console.log("An error occured - unable to login");
     }
   };
 
