@@ -1,5 +1,5 @@
-import React from 'react';
-//import './ContectUscss.css';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactUs = () => {
     return (
@@ -13,6 +13,8 @@ const ContactUs = () => {
 };
 
 const ContactForm = () => {
+    const form = useRef();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -22,9 +24,29 @@ const ContactForm = () => {
 
         if (name === '' || email === '' || info === '' || predefinedSubject === '') {
             alert('All fields are required!');
+        } else if (!validateEmail(email)) {
+            alert('Please enter a valid email address.');
         } else {
-            alert(`Thank you, ${name}. Your message has been sent!`);
+            sendEmail(e);
         }
+    };
+
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    };
+
+    const sendEmail = (e) => {
+        emailjs.sendForm('service_5rbpg5k', 'template_ufdu9pe', form.current, 'Nt-NeJLewxMEiJHyK')
+            .then(
+                () => {
+                    alert(`Thank you, ${e.target.name.value}. Your message has been sent!`);
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                    alert('An error occurred while sending the email.');
+                }
+            );
     };
 
     const handleSupportClick = () => {
@@ -34,7 +56,7 @@ const ContactForm = () => {
     return (
         <div className="col-sm-6">
             <h2>Contact Us</h2>
-            <form id="contactForm" onSubmit={handleSubmit}>
+            <form ref={form} id="contactForm" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name <span className="text-danger">*</span></label>
                     <input type="text" className="form-control" id="name" name="name" placeholder="Name" required />
