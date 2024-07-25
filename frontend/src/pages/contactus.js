@@ -1,5 +1,5 @@
 import React from 'react';
-//import './ContectUscss.css';
+//import './ContactUs.css';  // Uncomment if you have styles for this component
 
 const ContactUs = () => {
     return (
