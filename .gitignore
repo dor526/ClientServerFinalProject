@@ -4,3 +4,5 @@
 
 # Optional: ignore other files or directories
 .env
+
+.vscode

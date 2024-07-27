@@ -1,12 +1,24 @@
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 const Dashboard = () => {
   const [stocks, setStocks] = useState(null);
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({
+    key: null,
+    direction: "ascending",
+  });
 
   useEffect(() => {
     const fetchStocks = async () => {
-      const response = await fetch('/api/dashboard/');
+      const response = await fetch("/api/dashboard/", {
+        method: "GET", // or 'POST', 'PUT', etc.
+        headers: {
+          Authorization: Cookies.get("stock-site-token"), // Add the Authorization header
+          "Content-Type": "application/json", // Add other headers as needed
+        },
+      });
+
       const json = await response.json();
       if (response.ok) {
         setStocks(json);
@@ -16,7 +28,7 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    console.log('Updated stocks state:', stocks);
+    console.log("Updated stocks state:", stocks);
   }, [stocks]); // This will log whenever 'stocks' state is updated
 
   const formatMarketCap = (value) => {
@@ -34,24 +46,22 @@ const Dashboard = () => {
   const sortData = (key) => {
     if (!stocks) return;
 
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
+    let direction = "ascending";
+    if (sortConfig.key === key && sortConfig.direction === "ascending") {
+      direction = "descending";
     }
-    console.log("!!!")
-
+    console.log("!!!");
 
     const sortedData = [...stocks.companiesData].sort((a, b) => {
       if (a[key] < b[key]) {
-        return direction === 'ascending' ? -1 : 1;
+        return direction === "ascending" ? -1 : 1;
       }
       if (a[key] > b[key]) {
-        return direction === 'ascending' ? 1 : -1;
+        return direction === "ascending" ? 1 : -1;
       }
       return 0;
     });
-    console.log("???")
-
+    console.log("???");
 
     setSortConfig({ key, direction });
     setStocks({ ...stocks, companiesData: sortedData });
@@ -59,60 +69,92 @@ const Dashboard = () => {
 
   const getSortIcon = (key) => {
     if (sortConfig.key === key) {
-      return sortConfig.direction === 'ascending' ? '▲' : '▼';
+      return sortConfig.direction === "ascending" ? "▲" : "▼";
     }
-    return '⇅';
+    return "⇅";
+  };
+
+  const isJwtVaid = () => {
+    const token = Cookies.get("stock-site-token");
+    if (token == null) return false;
+
+    let decodedToken = jwtDecode(token);
+    let currentDate = new Date();
+
+    // JWT exp is in seconds
+    if (decodedToken.exp * 1000 < currentDate.getTime()) {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   return (
     <div className="dashboard">
-      <h2>Largest Companies by Market Cap</h2>
-      {stocks ? (
-        <table className="styled-table">
-          <thead>
-            <tr>
-              <th onClick={() => sortData('rank')}>Rank ⇅</th>
-              <th onClick={() => sortData('name')}>
-                Name {getSortIcon('name')}
-              </th>
-              <th onClick={() => sortData('symbol')}>
-                Symbol {getSortIcon('symbol')}
-              </th>
-              <th onClick={() => sortData('marketCap')}>
-                Market Cap {getSortIcon('marketCap')}
-              </th>
-              <th onClick={() => sortData('currentPrice')}>
-                Price {getSortIcon('currentPrice')}
-              </th>
-              <th onClick={() => sortData('percentageChange')}>
-                Today's Change {getSortIcon('percentageChange')}
-              </th>
-              <th onClick={() => sortData('country')}>
-                Country {getSortIcon('country')}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {stocks.companiesData.map((company, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>
-                  <img src={company.logo} alt={`${company.name} logo`} width="30" style={{ marginRight: '10px' }} />
-                  {company.name}
-                </td>
-                <td>{company.symbol}</td>
-                <td>{formatMarketCap(company.marketCap)}</td>
-                <td>${company.currentPrice.toFixed(2)}</td>
-                <td className={parseFloat(company.percentageChange) > 0 ? 'positive-change' : 'negative-change'}>
-                  {company.percentageChange}
-                </td>
-                <td>{company.country}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {!isJwtVaid() ? (
+        <h2> Unauthorized - Please Login</h2>
       ) : (
-        <p>Loading...</p>
+        <>
+          <h2>Largest Companies by Market Cap</h2>
+          {stocks ? (
+            <table className="styled-table">
+              <thead>
+                <tr>
+                  <th onClick={() => sortData("rank")}>Rank ⇅</th>
+                  <th onClick={() => sortData("name")}>
+                    Name {getSortIcon("name")}
+                  </th>
+                  <th onClick={() => sortData("symbol")}>
+                    Symbol {getSortIcon("symbol")}
+                  </th>
+                  <th onClick={() => sortData("marketCap")}>
+                    Market Cap {getSortIcon("marketCap")}
+                  </th>
+                  <th onClick={() => sortData("currentPrice")}>
+                    Price {getSortIcon("currentPrice")}
+                  </th>
+                  <th onClick={() => sortData("percentageChange")}>
+                    Today's Change {getSortIcon("percentageChange")}
+                  </th>
+                  <th onClick={() => sortData("country")}>
+                    Country {getSortIcon("country")}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {stocks.companiesData.map((company, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <img
+                        src={company.logo}
+                        alt={`${company.name} logo`}
+                        width="30"
+                        style={{ marginRight: "10px" }}
+                      />
+                      {company.name}
+                    </td>
+                    <td>{company.symbol}</td>
+                    <td>{formatMarketCap(company.marketCap)}</td>
+                    <td>${company.currentPrice.toFixed(2)}</td>
+                    <td
+                      className={
+                        parseFloat(company.percentageChange) > 0
+                          ? "positive-change"
+                          : "negative-change"
+                      }
+                    >
+                      {company.percentageChange}
+                    </td>
+                    <td>{company.country}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </>
       )}
     </div>
   );
