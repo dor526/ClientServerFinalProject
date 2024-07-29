@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Container, Row, Col, Form, Button, Alert, Card } from 'react-bootstrap';
+import '../styles/contactus.css';
 
 const ContactUs = () => {
     return (
@@ -82,7 +83,7 @@ const ContactForm = () => {
                     <option value="Billing">Billing</option>
                 </Form.Control>
             </Form.Group>
-            <Button variant="primary" type="submit" className="mt-3">
+            <Button variant="primary" type="submit" className="mt-3 ms-2">
                 Submit
             </Button>
             <Button variant="secondary" type="button" className="mt-3 ms-2" onClick={handleSupportClick}>
@@ -98,7 +99,7 @@ const ContactInfo = () => {
             <Card.Body>
                 <Card.Title>Contact Us</Card.Title>
                 <Card.Text>If you have any questions, feel free to reach out to us!</Card.Text>
-                <div className="d-flex justify-content-center flex-wrap">
+                <div className="justify-content-center flex-wrap">
                     <div className="p-2">
                         <h4>Email Us:</h4>
                         <p>support@example.com</p>

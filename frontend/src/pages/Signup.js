@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+import '../styles/signup.css';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -28,7 +29,7 @@ const Signup = () => {
     };
 
     return (
-        <Container className="mt-4">
+        <Container className="d-flex justify-content-center align-items-center min-vh-100">
             <Form onSubmit={onSubmitClick} className="w-50 mx-auto">
                 <h2 className="mb-4">Sign up</h2>
                 <Form.Group controlId="formEmail">
