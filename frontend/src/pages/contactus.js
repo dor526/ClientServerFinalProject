@@ -1,14 +1,20 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { Container, Row, Col, Form, Button, Alert, Card } from 'react-bootstrap';
+import '../styles/contactus.css';
 
 const ContactUs = () => {
     return (
-        <div className="container">
-            <div className="row">
-                <ContactForm />
-                <ContactInfo />
-            </div>
-        </div>
+        <Container className="mt-4">
+            <Row>
+                <Col md={6}>
+                    <ContactForm />
+                </Col>
+                <Col md={6}>
+                    <ContactInfo />
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
@@ -54,44 +60,46 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="col-sm-6">
+        <Form ref={form} id="contactForm" onSubmit={handleSubmit}>
             <h2>Contact Us</h2>
-            <form ref={form} id="contactForm" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="name">Name <span className="text-danger">*</span></label>
-                    <input type="text" className="form-control" id="name" name="name" placeholder="Name" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email <span className="text-danger">*</span></label>
-                    <input type="email" className="form-control" id="email" name="email" placeholder="Email" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="info">Info <span className="text-danger">*</span></label>
-                    <input type="text" className="form-control" id="info" name="info" placeholder="Info" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="predefinedSubject">Subject <span className="text-danger">*</span></label>
-                    <select className="form-control" id="predefinedSubject" name="predefinedSubject" required>
-                        <option value="">Select a subject</option>
-                        <option value="General Inquiry">General Inquiry</option>
-                        <option value="Technical Support">Technical Support</option>
-                        <option value="Billing">Billing</option>
-                    </select>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <button type="button" className="btn btn-secondary" onClick={handleSupportClick}>Contact Support</button>
-            </form>
-        </div>
+            <Form.Group controlId="name">
+                <Form.Label>Name <span className="text-danger">*</span></Form.Label>
+                <Form.Control type="text" name="name" placeholder="Name" required />
+            </Form.Group>
+            <Form.Group controlId="email">
+                <Form.Label>Email <span className="text-danger">*</span></Form.Label>
+                <Form.Control type="email" name="email" placeholder="Email" required />
+            </Form.Group>
+            <Form.Group controlId="info">
+                <Form.Label>Info <span className="text-danger">*</span></Form.Label>
+                <Form.Control type="text" name="info" placeholder="Info" required />
+            </Form.Group>
+            <Form.Group controlId="predefinedSubject">
+                <Form.Label>Subject <span className="text-danger">*</span></Form.Label>
+                <Form.Control as="select" name="predefinedSubject" required>
+                    <option value="">Select a subject</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Technical Support">Technical Support</option>
+                    <option value="Billing">Billing</option>
+                </Form.Control>
+            </Form.Group>
+            <Button variant="primary" type="submit" className="mt-3 ms-2">
+                Submit
+            </Button>
+            <Button variant="secondary" type="button" className="mt-3 ms-2" onClick={handleSupportClick}>
+                Contact Support
+            </Button>
+        </Form>
     );
 };
 
 const ContactInfo = () => {
     return (
-        <div className="col-sm-6">
-            <div className="jumbotron text-center">
-                <h1>Contact Us</h1>
-                <p>If you have any questions, feel free to reach out to us!</p>
-                <div className="d-flex justify-content-center flex-wrap">
+        <Card className="text-center mt-4">
+            <Card.Body>
+                <Card.Title>Contact Us</Card.Title>
+                <Card.Text>If you have any questions, feel free to reach out to us!</Card.Text>
+                <div className="justify-content-center flex-wrap">
                     <div className="p-2">
                         <h4>Email Us:</h4>
                         <p>support@example.com</p>
@@ -101,12 +109,12 @@ const ContactInfo = () => {
                         <p>+1 234 567 890</p>
                     </div>
                 </div>
-                <div className="alert alert-info mt-3">
+                <Alert variant="info" className="mt-3">
                     <h4>Special Offer!</h4>
                     <p>Get 20% off on your first purchase. Use code: FIRST20</p>
-                </div>
-            </div>
-        </div>
+                </Alert>
+            </Card.Body>
+        </Card>
     );
 };
 
