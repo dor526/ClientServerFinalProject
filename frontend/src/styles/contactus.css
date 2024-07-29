@@ -1,0 +1,109 @@
+/* Container styling */
+.container {
+    margin-top: 20px;
+}
+
+/* Ensure both columns are of equal height */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-6 {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+}
+
+/* Contact Form styling */
+#contactForm {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+#contactForm h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button.mt-3 {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+}
+
+/* Contact Info Card styling */
+.card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.card-title {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.card-text {
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
+.card .d-flex  {
+    flex: 1;
+    text-align: left;
+    padding: 5px;
+}
+
+.alert {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    #contactForm, .card {
+        padding: 15px;
+    }
+
+    #contactForm h2, .card-title {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 8px;
+    }
+}

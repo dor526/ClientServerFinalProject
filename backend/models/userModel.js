@@ -40,7 +40,7 @@ userSchema.statics.signup =async function (email, password) {
 }
 
 //static login method
-userSchema.statics.login =async function (email, password) {
+userSchema.statics.login = async function (email, password) {
     
     //do validation to data
     if(!email || !password){

@@ -1,26 +1,34 @@
-const express = require('express')
-const User = require('../models/userModel')
+const express = require("express");
+const User = require("../models/userModel");
+var jwt = require("jsonwebtoken");
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/login',  async (req,res)=>{
-    const {email, password} =req.body
-    try{
-        const user = await User.login(email, password)
-        res.status(200).json({email})
-    } catch (error){
-        res.status(400).json({error: error.message})
-    }
-})
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const JWT_KEY = "RBuGgRlv1hY1U3lsb5LqrEVNuieE66YI";
+    const user = await User.login(email, password);
 
-router.post('/signup', async (req,res)=>{
-    const {email, password} =req.body
-    try{
-        const user = await User.signup(email, password)
-        res.status(200).json({email})
-    } catch (error){
-        res.status(400).json({error: error.message})
-    }
-})
+    const userToHash = { email: user.email };
+    const token = jwt.sign(userToHash, JWT_KEY, { expiresIn: "30m" });
 
-module.exports =router
+    res.cookie("stock-site-token", token);
+    res.status(200).json({ email: email, auth: true });
+  } catch (error) {
+    res.status(400).json({ error: error.message, auth: false, token: null });
+  }
+});
+
+router.post("/signup", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.signup(email, password);
+
+    res.status(200).json({ email });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+module.exports = router;
