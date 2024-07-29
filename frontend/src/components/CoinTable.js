@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../components/CoinTable.css';
 import Coin from '../components/coin';  // Ensure the import matches the actual file name
 
 function CoinTable() {
