@@ -1,44 +1,63 @@
-import {useState} from 'react'
-const Signup = () =>{
-    const [email ,setEmail] =useState('')
-    const [password ,setPassword] =useState('')
+import { useState } from 'react';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
 
-    const [error, setError] = useState(null)
+const Signup = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
 
-    const onSubmitClick = async (e) =>{
-        e.preventDefault()
+    const onSubmitClick = async (e) => {
+        e.preventDefault();
 
-        setError(null)
+        setError(null);
         const response = await fetch('/api/user/signup', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
-          })
-          const json = await response.json()
-          if (!response.ok) {
-            setError(json.error)
-          }
-          if (response.ok) {
-            console.log(json)
-          }
+        });
+        const json = await response.json();
+        if (!response.ok) {
+            setError(json.error);
+        }
+        if (response.ok) {
+            console.log(json);
+            // Handle successful signup (e.g., redirect or show a success message)
+        }
 
-        console.log(email, password)
-    }
+        console.log(email, password);
+    };
+
     return (
-        <form className='signup' onSubmit={onSubmitClick} >
-           <h2>Sign up</h2>
-           <label>Email:</label>
-           <input type='text' onChange={(e) =>setEmail(e.target.value)} value={email}></input>
+        <Container className="mt-4">
+            <Form onSubmit={onSubmitClick} className="w-50 mx-auto">
+                <h2 className="mb-4">Sign up</h2>
+                <Form.Group controlId="formEmail">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="Enter your email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group controlId="formPassword" className="mt-3">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Enter your password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        required
+                    />
+                </Form.Group>
+                <Button variant="primary" type="submit" className="mt-3">
+                    Sign up
+                </Button>
+                {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
+            </Form>
+        </Container>
+    );
+};
 
-           <label>password:</label>
-           <input type='password' onChange={(e) =>setPassword(e.target.value)} value={password}></input>
-
-           <button>Sign up</button>
-           {error && <div className='error'>{error}</div>}
-
-        </form>
-    )
-
-}
-
-export default Signup
+export default Signup;
