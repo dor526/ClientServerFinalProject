@@ -1,47 +1,127 @@
 .coin-app {
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 900px;
+  margin: 0 auto;
+  max-width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.coin-header {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+.coin-summary {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #555;
+}
+
+.coin-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.coin-text {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.coin-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 .coin-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 96%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 .coin-table th,
 .coin-table td {
-    border: 1px solid #d31515;
-    padding: 8px;
-    text-align: center;
+  border: 1px solid #007bff;
+  padding: 12px;
+  text-align: center;
 }
 
 .coin-table th {
-    background-color: #d81f1f;
-    cursor: pointer;
-    /* Indicates that the header is clickable */
+  background-color: #005fc5;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .coin-table th.sortable:hover {
-    background-color: #be1717;
-    /* Light background on hover */
+  background-color: #007bff;
 }
 
 .coin-table th.sorted-asc::after {
-    content: '▲';
-    margin-left: 5px;
+  content: "▲";
+  margin-left: 5px;
 }
 
 .coin-table th.sorted-desc::after {
-    content: '▼';
-    margin-left: 5px;
+  content: "▼";
+  margin-left: 5px;
 }
 
 .red {
-    color: #f00606;
+  color: #f00606;
 }
 
 .green {
-    color: #11d811;
+  color: #11d811;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination button {
+  margin: 0 3px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #005fc5;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #005fc5;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.pagination button.active {
+  background-color: #005fc5;
+  color: #ffffff;
+  border-color: #005fc5;
+}
+
+.pagination button:hover {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
+}
+
+.pagination button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 87, 87, 0.4);
 }
