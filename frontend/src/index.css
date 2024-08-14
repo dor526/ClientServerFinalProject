@@ -1,5 +1,9 @@
 /* google font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+}
 
 /* layout */
 :root {
@@ -9,7 +13,6 @@
 body {
   background: #f1f1f1;
   margin: 0;
-  font-family: "Poppins";
 }
 
 header {
@@ -28,16 +31,14 @@ header a {
   text-decoration: none;
 }
 
-.pages{
-  max-width: 1400px;
-  padding: 20px;
+.pages {
+  max-width: 100%;
+  /* padding: 20px; */
   margin: 0 auto;
 }
 
-
 .dashboard {
   padding: 20px;
-  font-family: Arial, sans-serif;
 }
 
 .styled-table {
@@ -93,7 +94,8 @@ nav a {
   margin-left: 10px;
 }
 /* auth forms */
-form.signup, form.login {
+form.signup,
+form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
