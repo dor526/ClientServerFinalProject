@@ -160,7 +160,7 @@ function CoinTable() {
             <tbody>
               {currentCoins.map((coin, index) => (
                 <tr key={coin.id}>
-                  <td>{index + 1}</td>
+                  <td>{(currentPage - 1) * coinsPerPage + (index + 1)}</td>
                   <td>
                     <img
                       src={coin.image}
