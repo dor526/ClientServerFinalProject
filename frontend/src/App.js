@@ -1,38 +1,32 @@
 import Dashboard from "./pages/dashboard";
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import ContactUs from "./pages/contactus";
 import Homepage from "./pages/HomePage";
+import "./styles/app.css";
+
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
         <Navbar></Navbar>
         <div className="pages">
           <Routes>
             <Route path="/" element={<Navigate to="/login" />} />
 
-            <Route path="/dashboard" element={<Dashboard></Dashboard>}>
-            </Route>
+            <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
 
-            <Route path="/login" element={<Login></Login>}>
-            </Route>
+            <Route path="/login" element={<Login></Login>}></Route>
 
-            <Route path="/signup" element={<Signup></Signup>}>
-            </Route>
+            <Route path="/signup" element={<Signup></Signup>}></Route>
 
-            <Route path="/contactus" element={<ContactUs></ContactUs>}>
-            </Route>
+            <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
 
-            <Route path="/HomePage" element={<Homepage></Homepage>}>
-            </Route>
-
+            <Route path="/homepage" element={<Homepage></Homepage>}></Route>
           </Routes>
-
         </div>
-
       </BrowserRouter>
     </div>
   );
