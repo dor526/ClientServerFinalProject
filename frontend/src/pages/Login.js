@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "../styles/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,10 +40,10 @@ const Login = () => {
       <div className="row w-100 h-100">
         <div
           id="login-form-container"
-          className="d-flex justify-content-center align-items-center"
+          className="d-flex justify-content-center align-items-center w-100 h-100"
         >
-          <Form className="w-50" onSubmit={onSubmitClick}>
-            <h2 className="mb-5 text-center">Log in</h2>
+          <Form className="login-form" onSubmit={onSubmitClick}>
+            <h2 className="mt-3 mb-5 text-center fw-bold">Welcome</h2>
             <Form.Group controlId="formEmail">
               <Form.Control
                 type="email"
