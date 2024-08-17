@@ -1,49 +1,49 @@
 /* General styles for the Navbar */
 .navbar {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #0d6efd !important; /* Bootstrap primary color */
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #0d6efd !important; /* Bootstrap primary color */
 }
 
 .navbar-brand:hover {
-    color: #0a58ca !important; /* Slightly darker shade on hover */
+  color: #0a58ca !important; /* Slightly darker shade on hover */
 }
 
 .nav-link {
-    font-size: 1rem;
-    color: #495057 !important; /* Bootstrap secondary color */
-    margin-right: 1rem;
-    transition: color 0.3s;
+  font-size: 1rem;
+  color: #495057 !important; /* Bootstrap secondary color */
+  margin-right: 1rem;
+  transition: color 0.3s;
 }
 
 .nav-link:hover {
-    color: #0d6efd !important; /* Bootstrap primary color */
+  color: #0d6efd !important; /* Bootstrap primary color */
 }
 
 .navbar-toggler {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/></svg>");
 }
 
 /* Responsive design adjustments */
 @media (max-width: 992px) {
-    .navbar-collapse {
-        background-color: #f8f9fa; /* Bootstrap light color */
-        padding: 1rem;
-        border-radius: 10px;
-    }
+  .navbar-collapse {
+    background-color: #f8f9fa; /* Bootstrap light color */
+    padding: 1rem;
+    border-radius: 10px;
+  }
 
-    .nav-link {
-        margin: 0.5rem 0;
-        text-align: center;
-    }
+  .nav-link {
+    margin: 0.5rem 0;
+    text-align: center;
+  }
 }
