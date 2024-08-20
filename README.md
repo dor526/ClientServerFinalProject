@@ -1,2 +1,2 @@
 # ClientServerFinalProject
-Stocks application
+Crypto Coins application
