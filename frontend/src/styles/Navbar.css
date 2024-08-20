@@ -1,5 +1,7 @@
 /* General styles for the Navbar */
 .navbar {
+  background: linear-gradient(400deg, #d3d3d3, #a9a9a9);
+  /* Light grey to dark grey gradient */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -7,27 +9,36 @@
 .navbar-brand {
   font-weight: bold;
   font-size: 1.5rem;
-  color: #0d6efd !important; /* Bootstrap primary color */
+  color: #0d6efd !important;
+  /* Bootstrap primary color */
 }
 
 .navbar-brand:hover {
-  color: #0a58ca !important; /* Slightly darker shade on hover */
+  color: #0a58ca !important;
+  /* Slightly darker shade on hover */
 }
 
 .nav-link {
   font-size: 1rem;
-  color: #495057 !important; /* Bootstrap secondary color */
+  color: #495057 !important;
+  /* Bootstrap secondary color */
   margin-right: 1rem;
   transition: color 0.3s;
 }
 
 .nav-link:hover {
-  color: #0d6efd !important; /* Bootstrap primary color */
+  color: #0d6efd !important;
+  /* Bootstrap primary color */
 }
 
 .navbar-toggler {
   border: none;
   outline: none;
+  margin-left: auto;
+  /* Aligns the toggler properly */
+  z-index: 1020;
+  /* Ensures the toggler is above the collapsible content */
+
 }
 
 .navbar-toggler-icon {
@@ -37,7 +48,8 @@
 /* Responsive design adjustments */
 @media (max-width: 992px) {
   .navbar-collapse {
-    background-color: #f8f9fa; /* Bootstrap light color */
+    background: linear-gradient(150deg, #d3d3d3, #a9a9a9);
+    /* Bootstrap light color */
     padding: 1rem;
     border-radius: 10px;
   }

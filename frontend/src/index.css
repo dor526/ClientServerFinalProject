@@ -5,6 +5,8 @@
   font-family: "Roboto", sans-serif;
 }
 
+
+
 html {
   margin: 0;
   height: 100%;
@@ -20,8 +22,14 @@ html {
   --primary: #1aac83;
   --error: #e7195a;
 }
+
 body {
-  background: #f1f1f1;
+  background: linear-gradient(400deg, #6a1b9a, #ab47bc);
+  /* Purple gradient */
+  background-size: cover;
+  background-attachment: fixed;
+  /* Ensure the background stays in place */
+
   margin: 0;
   height: 100%;
 }
@@ -29,6 +37,7 @@ body {
 header {
   background: #fff;
 }
+
 header .navbar {
   max-width: 1400px;
   margin: 0 auto;
@@ -37,6 +46,7 @@ header .navbar {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   color: #333;
   text-decoration: none;
@@ -95,15 +105,17 @@ nav {
   display: flex;
   align-items: center;
 }
+
 nav a {
   margin-left: 10px;
 }
+
 /* auth forms */
 form.signup,
 form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
-  background: #fff;
+  background: #c21010;
   border-radius: 4px;
 }

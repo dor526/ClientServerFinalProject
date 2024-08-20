@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <BootstrapNavbar bg="light" expand="lg" className="mb-4">
       <Container className="mt-1 p-1">
-        <BootstrapNavbar.Brand href="#">Stocks Site</BootstrapNavbar.Brand>
+        <BootstrapNavbar.Brand href="#">Crypto Site</BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
