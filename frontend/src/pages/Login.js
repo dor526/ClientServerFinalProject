@@ -23,7 +23,7 @@ const Login = () => {
     }
     if (response.ok) {
       console.log(json);
-      window.location.href = "/dashboard"; // Redirect to Dashboard
+      window.location.href = "/homepage"; // Redirect to Dashboard
     }
 
     console.log(email, password);

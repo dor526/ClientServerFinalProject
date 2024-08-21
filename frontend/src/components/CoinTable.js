@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles/coinTable.css";
 import "../styles/coin.css";
 import { formatPrice } from "../components/utils";
+import Cookies from "js-cookie";
 
 function CoinTable() {
   const [coins, setCoins] = useState([]);
@@ -16,7 +17,13 @@ function CoinTable() {
   useEffect(() => {
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false",
+        {
+          headers: {
+            Authorization: Cookies.get("stock-site-token"), // Add the Authorization header
+            "Content-Type": "application/json", // Add other headers as needed
+          },
+        }
       )
       .then((res) => {
         const coinsData = res.data;
