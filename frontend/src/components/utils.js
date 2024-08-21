@@ -30,7 +30,7 @@ export function AnonymousRoute() {
   return isLoggedIn() ? <Navigate to="/homepage" replace /> : <Outlet />;
 }
 
-const isLoggedIn = () => {
+export function isLoggedIn() {
   const token = Cookies.get("stock-site-token");
   if (token == null) return false;
 
@@ -43,4 +43,4 @@ const isLoggedIn = () => {
   } else {
     return true;
   }
-};
+}
