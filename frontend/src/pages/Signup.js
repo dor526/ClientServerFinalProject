@@ -52,9 +52,11 @@ const Signup = () => {
                             required
                         />
                     </Form.Group>
-                    <Button variant="primary" type="submit" className="mt-3 w-100">
-                        Sign up
-                    </Button>
+                    <div className="d-flex justify-content-center ">
+                        <Button variant="primary" type="submit" className="mt-3">
+                            Sign up
+                        </Button>
+                    </div>
                     {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
                     <Form.Label className="d-block text-center mt-4">
                         Already have an account? <Link to="/login">Log in</Link>

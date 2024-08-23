@@ -1,6 +1,6 @@
 /* General styles for the Navbar */
 .navbar {
-  background: linear-gradient(400deg, #d3d3d3, #a9a9a9);
+  background: #fff;
   /* Light grey to dark grey gradient */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -48,7 +48,7 @@
 /* Responsive design adjustments */
 @media (max-width: 992px) {
   .navbar-collapse {
-    background: linear-gradient(150deg, #d3d3d3, #a9a9a9);
+    background: #fff;
     /* Bootstrap light color */
     padding: 1rem;
     border-radius: 10px;

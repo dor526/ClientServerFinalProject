@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  background: linear-gradient(400deg, #6a1b9a, #ab47bc);
+  background: #fff;
   /* Purple gradient */
   background-size: cover;
   background-attachment: fixed;
