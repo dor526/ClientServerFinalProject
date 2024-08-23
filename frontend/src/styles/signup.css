@@ -1,70 +1,84 @@
-/* Container styling */
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-}
-
-/* Form styling */
-form {
+/* Default Styles */
+.signup-form {
     width: 100%;
+    max-width: 500px;
+    /* Adjusted for better fit */
     padding: 20px;
+    margin: auto;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background: #fff;
 }
 
-form h2 {
-    margin-bottom: 20px;
-    color: #007bff;
+.signup-form h2 {
+    color: #0d6efd;
+    /* Change the color to blue */
 }
 
-.form-group {
-    margin-bottom: 15px;
+.signup-form button {
+    width: 25%;
+    /* Set the width to 25% of the container */
+    margin-left: auto;
+    border: none;
+    /* Remove default border */
+    border-radius: 4px;
+    /* Match border-radius with textboxes */
+
 }
 
-.form-group label {
-    font-weight: bold;
-    color: #343a40;
+
+/* Full Viewport Height */
+
+#signup-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.form-control {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-button.mt-3 {
-    margin-top: 1rem;
-}
-
-/* Error alert styling */
-.alert {
-    margin-top: 1rem;
-    border-radius: 5px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
+/* Extra Small and Small (≤576px) */
+@media (max-width: 576px) {
+    .signup-form {
+        width: 90%;
+        height: auto;
+        /* Adjust height to fit content */
     }
+}
 
-    form {
+/* Medium (≥768px to <992px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .signup-form {
+        width: 80%;
+    }
+}
+
+/* Large (≥992px to <1200px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .signup-form {
+        width: 60%;
+    }
+}
+
+/* Extra Large (≥1200px to <1400px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .signup-form {
+        width: 50%;
+    }
+}
+
+/* XXL (≥1400px) */
+@media (min-width: 1400px) {
+    .signup-form {
+        width: 50%;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .signup-form {
         padding: 15px;
     }
 
-    form h2 {
+    .signup-form h2 {
         font-size: 1.5rem;
-    }
-
-    button {
-        padding: 8px;
     }
 }

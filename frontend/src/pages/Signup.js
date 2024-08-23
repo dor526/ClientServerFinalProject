@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom'; // Import Link for routing
 import '../styles/signup.css';
 
 const Signup = () => {
@@ -29,35 +30,40 @@ const Signup = () => {
     };
 
     return (
-        <Container className="d-flex justify-content-center align-items-center min-vh-100">
-            <Form onSubmit={onSubmitClick} className="w-50 mx-auto">
-                <h2 className="mb-4">Sign up</h2>
-                <Form.Group controlId="formEmail">
-                    <Form.Label>Email:</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="Enter your email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}
-                        required
-                    />
-                </Form.Group>
-                <Form.Group controlId="formPassword" className="mt-3">
-                    <Form.Label>Password:</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Enter your password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
-                        required
-                    />
-                </Form.Group>
-                <Button variant="primary" type="submit" className="mt-3">
-                    Sign up
-                </Button>
-                {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-            </Form>
-        </Container>
+        <div id="signup-main-container" className="container-fluid d-flex justify-content-center align-items-center m-0 p-0 h-100 w-100">
+            <div id="signup-form-container" className="w-100">
+                <Form onSubmit={onSubmitClick} className="signup-form">
+                    <h2 className="mb-4 text-center fw-bold">Sign up</h2>
+                    <Form.Group controlId="formEmail">
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter your email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            required
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formPassword" className="mt-3">
+                        <Form.Control
+                            type="password"
+                            placeholder="Enter your password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            required
+                        />
+                    </Form.Group>
+                    <div className="d-flex justify-content-center ">
+                        <Button variant="primary" type="submit" className="mt-3">
+                            Sign up
+                        </Button>
+                    </div>
+                    {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
+                    <Form.Label className="d-block text-center mt-4">
+                        Already have an account? <Link to="/login">Log in</Link>
+                    </Form.Label>
+                </Form>
+            </div>
+        </div>
     );
 };
 
