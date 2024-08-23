@@ -9,45 +9,47 @@ import {
   Alert,
   Card,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 import "../styles/contactus.css";
 
 const ContactUs = () => {
   return (
-    <Container className="mt-4">
-      <Row>
-        <Col md={6}>
+    <Container className="mt-4 mb-4">
+      <Row className="d-flex justify-content-center">
+        <Col md={5}>
           <ContactForm />
         </Col>
-        <Col md={6}>
+      </Row>
+
+      {/* <Row className="d-flex justify-content-center">
+        <Col md={5}>
           <ContactInfo />
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   );
 };
 
 const ContactForm = () => {
   const form = useRef();
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
-    const info = e.target.info.value;
-    const predefinedSubject = e.target.predefinedSubject.value;
+    const subject = e.target.subject.value;
 
-    if (
-      name === "" ||
-      email === "" ||
-      info === "" ||
-      predefinedSubject === ""
-    ) {
+    if (name === "" || email === "" || subject === "") {
       alert("All fields are required!");
     } else if (!validateEmail(email)) {
       alert("Please enter a valid email address.");
     } else {
       sendEmail(e);
     }
+
+    navigate("/homepage");
   };
 
   const validateEmail = (email) => {
@@ -82,46 +84,44 @@ const ContactForm = () => {
 
   return (
     <Form ref={form} id="contactForm" onSubmit={handleSubmit}>
-      <h2>Contact Us</h2>
+      <h2 className="text-center fw-bold">Contact Us</h2>
       <Form.Group controlId="name">
         <Form.Label>
           Name <span className="text-danger">*</span>
         </Form.Label>
         <Form.Control type="text" name="name" placeholder="Name" required />
       </Form.Group>
+      <br></br>
       <Form.Group controlId="email">
         <Form.Label>
           Email <span className="text-danger">*</span>
         </Form.Label>
         <Form.Control type="email" name="email" placeholder="Email" required />
       </Form.Group>
-      <Form.Group controlId="info">
-        <Form.Label>
-          Info <span className="text-danger">*</span>
-        </Form.Label>
-        <Form.Control type="text" name="info" placeholder="Info" required />
-      </Form.Group>
-      <Form.Group controlId="predefinedSubject">
+      <br></br>
+      <Form.Group controlId="subject">
         <Form.Label>
           Subject <span className="text-danger">*</span>
         </Form.Label>
-        <Form.Control as="select" name="predefinedSubject" required>
+        <Form.Control as="select" name="subject" required>
           <option value="">Select a subject</option>
           <option value="General Inquiry">General Inquiry</option>
           <option value="Technical Support">Technical Support</option>
-          <option value="Billing">Billing</option>
+          <option value="Report an Issue">Report an issue</option>
         </Form.Control>
       </Form.Group>
-      <Button variant="primary" type="submit" className="mt-3 ms-2">
+      <br />
+      <Form.Group controlId="message">
+        <Form.Label>Message</Form.Label>
+        <Form.Control
+          as="textarea"
+          name="message"
+          rows={4}
+          placeholder="Your message"
+        />
+      </Form.Group>
+      <Button variant="primary" type="submit" className="mt-5 ms-2">
         Submit
-      </Button>
-      <Button
-        variant="secondary"
-        type="button"
-        className="mt-3 ms-2"
-        onClick={handleSupportClick}
-      >
-        Contact Support
       </Button>
     </Form>
   );
@@ -129,7 +129,7 @@ const ContactForm = () => {
 
 const ContactInfo = () => {
   return (
-    <Card className="text-center mt-4">
+    <Card className="text-center my-2">
       <Card.Body>
         <Card.Title>Contact Us</Card.Title>
         <Card.Text>
@@ -138,17 +138,13 @@ const ContactInfo = () => {
         <div className="justify-content-center flex-wrap">
           <div className="p-2">
             <h4>Email Us:</h4>
-            <p>support@example.com</p>
+            <p>crypto-watcher@gmail.com</p>
           </div>
           <div className="p-2">
             <h4>Call Us:</h4>
-            <p>+1 234 567 890</p>
+            <p>+972 123456789</p>
           </div>
         </div>
-        <Alert variant="info" className="mt-3">
-          <h4>Special Offer!</h4>
-          <p>Get 20% off on your first purchase. Use code: FIRST20</p>
-        </Alert>
       </Card.Body>
     </Card>
   );
