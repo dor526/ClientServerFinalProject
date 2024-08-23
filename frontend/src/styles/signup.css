@@ -82,16 +82,3 @@
         font-size: 1.5rem;
     }
 }
-
-/* Error alert styling */
-.alert {
-    margin-top: 1rem;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #d3d3d3, #a9a9a9);
-    /* Light grey to dark grey gradient */
-
-    /* Light red background for alerts */
-    color: #721c24;
-    /* Dark red text for alerts */
-    padding: 10px;
-}
