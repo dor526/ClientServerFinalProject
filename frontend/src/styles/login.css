@@ -29,17 +29,12 @@
   /* Change the color to blue */
 }
 
-/* Full Viewport Height */
-#login-main-container,
-#login-form-container {
-  height: 100vh;
-  /* Full viewport height */
-}
 
 #login-form-container {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 /* Extra Small and Small (≤576px) */

@@ -28,11 +28,6 @@
 
 
 /* Full Viewport Height */
-#signup-main-container,
-#signup-form-container {
-    height: 100vh;
-    /* Full viewport height */
-}
 
 #signup-form-container {
     display: flex;

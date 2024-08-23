@@ -30,7 +30,7 @@ const Signup = () => {
     };
 
     return (
-        <div id="signup-main-container" className="container-fluid d-flex justify-content-center align-items-center m-0 p-0">
+        <div id="signup-main-container" className="container-fluid d-flex justify-content-center align-items-center m-0 p-0 h-100 w-100">
             <div id="signup-form-container" className="w-100">
                 <Form onSubmit={onSubmitClick} className="signup-form">
                     <h2 className="mb-4 text-center fw-bold">Sign up</h2>

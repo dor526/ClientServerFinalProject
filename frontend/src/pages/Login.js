@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <div id="login-main-container" className="container-fluid d-flex justify-content-center align-items-center m-0 p-0">
+    <div id="login-main-container" className="container-fluid d-flex justify-content-center align-items-center m-0 p-0 h-100 w-100">
       <div id="login-form-container" className="w-100">
         <Form onSubmit={onSubmitClick} className="login-form">
           <h2 className="mt-3 mb-5 text-center fw-bold">Welcome to crypto helper</h2>
