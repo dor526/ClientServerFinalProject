@@ -1,3 +1,7 @@
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+import { Outlet, Navigate } from "react-router-dom";
+
 export function formatPrice(number) {
   const scales = [
     { value: 1e12, suffix: "T" },
@@ -16,4 +20,27 @@ export function formatPrice(number) {
   }
 
   return number.toString();
+}
+
+export function PrivateRoute() {
+  return isLoggedIn() ? <Outlet /> : <Navigate to="/login" replace />;
+}
+
+export function AnonymousRoute() {
+  return isLoggedIn() ? <Navigate to="/homepage" replace /> : <Outlet />;
+}
+
+export function isLoggedIn() {
+  const token = Cookies.get("stock-site-token");
+  if (token == null) return false;
+
+  let decodedToken = jwtDecode(token);
+  let currentDate = new Date();
+
+  // JWT exp is in seconds
+  if (decodedToken.exp * 1000 < currentDate.getTime()) {
+    return false;
+  } else {
+    return true;
+  }
 }
