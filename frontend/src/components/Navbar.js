@@ -14,7 +14,7 @@ const Navbar = () => {
     // Optionally: Implement any other logout logic here
 
     // Redirect to the login page after logging out
-    navigate("/login");
+    navigate("/sign-in");
   };
 
   const loggedIn = isLoggedIn(); // Determine if the user is logged in
@@ -31,19 +31,19 @@ const Navbar = () => {
             {loggedIn ? (
               <>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-                <Nav.Link as={Link} to="/contactus">
+                <Nav.Link as={Link} to="/contact-us">
                   Contact Us
                 </Nav.Link>
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link as={Link} to="/sign-in">
                   Login
                 </Nav.Link>
-                <Nav.Link as={Link} to="/signup">
+                <Nav.Link as={Link} to="/sign-up">
                   Signup
                 </Nav.Link>
-                <Nav.Link as={Link} to="/contactus">
+                <Nav.Link as={Link} to="/contact-us">
                   Contact Us
                 </Nav.Link>
               </>

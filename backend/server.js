@@ -4,9 +4,7 @@ require("dotenv").config();
 const app = express();
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const { verifyToken } = require("./middleware/verifyToken");
 
-const stocksRoutes = require("./routes/stockes");
 const userRoutes = require("./routes/user");
 
 app.use(express.json());
@@ -17,7 +15,6 @@ app.use((req, res, next) => {
 app.use(cookieParser());
 
 app.use("/api/user", userRoutes);
-app.use("/api/dashboard", verifyToken, stocksRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -29,6 +26,4 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-// app.listen(process.env.PORT,()=>{
-//     console.log('connected to db and listen on port ', process.env.PORT)
-// })
+

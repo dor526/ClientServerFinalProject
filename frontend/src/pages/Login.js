@@ -23,7 +23,7 @@ const Login = () => {
     }
     if (response.ok) {
       console.log(json);
-      window.location.href = "/homepage"; // Redirect to Dashboard
+      window.location.href = "/dashboard"; // Redirect to Dashboard
     }
 
     console.log(email, password);
@@ -66,7 +66,7 @@ const Login = () => {
             </Alert>
           )}
           <Form.Label className="d-block text-center mt-4">
-            Don't have an account? <Link to="/signup">Register</Link>
+            Don't have an account? <Link to="/sign-up">Sign Up</Link>
           </Form.Label>
         </Form>
       </div>
