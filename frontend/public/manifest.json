@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Crypto Watcher",
+  "name": "React app to display crypto currencies statuses",
   "icons": [
     {
       "src": "favicon.ico",

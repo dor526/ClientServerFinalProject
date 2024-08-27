@@ -49,7 +49,7 @@ const ContactForm = () => {
       sendEmail(e);
     }
 
-    navigate("/homepage");
+    navigate("/dashboard");
   };
 
   const validateEmail = (email) => {
